@@ -8,16 +8,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.OleDb;
-using Microsoft.Win32;
 
 namespace BrasseLutterbeck
 {
-    public partial class FormClientEinstellungen : Form
+    public partial class FormAdminEinstellungen : Form
     {
         OleDbConnection Con;
-        string MAID, FIID;
+        public string MAID, FIID;
         string Passwort = "";
-        public FormClientEinstellungen(OleDbConnection con, string maID, string fiID)
+        public FormAdminEinstellungen()
+        {
+            InitializeComponent();
+            Start();
+        }
+        public FormAdminEinstellungen(OleDbConnection con, string maID, string fiID)
         {
             InitializeComponent();
             Con = con;
@@ -25,7 +29,6 @@ namespace BrasseLutterbeck
             FIID = fiID;
             Start();
         }
-
         public void Start()
         {
 
@@ -132,9 +135,9 @@ namespace BrasseLutterbeck
                 }
                 else
                 {
-
+                    
                     EinstellungenAendern();
-
+                    
                 }
             }
             catch (Exception ex)
@@ -146,6 +149,9 @@ namespace BrasseLutterbeck
             {
                 Con.Close();
             }
+
+
+
         }
 
         public void EinstellungenAendern()
@@ -188,9 +194,11 @@ namespace BrasseLutterbeck
 
             this.Close();
         }
-
-
     }
 
 
+
+
 }
+
+
